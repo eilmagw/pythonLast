@@ -34,6 +34,19 @@ elif optSel == "2":
     newState = FormatState(state)
     print("The formatted version of",state,"is",newState)
 elif optSel == "3":
-    print("d'oh!")
+    fileFile = input("What would you like to name the file? ")
+    fList = []
+    for p in pathlib.Path('.').iterdir():
+        if p.is_file():
+            fList.append(p)
+    with open(fileFile,"w") as myFileWrite:
+        myFileWrite.write("These are my files:\n")
+        for f in fList:
+            myFileWrite.write(f.name)
+            myFileWrite.write("\n")
+elif optSel == "4":
+    readFile = input("Which file would you like to read? ")
+    with open(readFile, "r+") as myFileRead:
+        print(myFileRead.read())
 else:
     print("Canceled. Have a nice day.")
